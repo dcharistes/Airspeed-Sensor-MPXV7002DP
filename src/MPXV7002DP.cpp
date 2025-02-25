@@ -25,9 +25,9 @@ float PressureSensor::readPressure() {
     
     // Calculate diff pressure
     float diff_pressure = (sensorVoltage - 2.5) ;  // datasheet formula
-
-    int flag = (diff_pressure < 0) ? 1 : -1; //flag is needed for minus sign
-    diff_pressure = abs(diff_pressure); //absolute value
+    if(diff_pressure < 0){
+        diff_pressure = -diff_pressure; //flag is needed for minus sign
+    }
 
     return diff_pressure;
 }
